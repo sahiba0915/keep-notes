@@ -37,17 +37,20 @@ const addNote = (text) => {
   setNotes(newNotes);
 }
 
+const[darkMode, setDarkMode] = useState(false);
 
 const deleteNote = (id) => {
   const newNotes = notes.filter((note) => note.id!== id);
   setNotes(newNotes);
 }
   return (
-    <div className='container'>
-      <Header />
+    <div className={`${darkMode && 'dark-mode'}`}>
+      <div className='container'>
+      <Header handleToggleMode={setDarkMode}/>
       <SearchNote handleSearchNote = {setSearchNote} />
       <NotesList notes={notes.filter((note) => note.text.toLowerCase().includes(searchNote))}  handleAddNote={addNote} handleDeleteNote={deleteNote}/>
-    </div>  
+    </div> 
+    </div>
     )
 }
 
