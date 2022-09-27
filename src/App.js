@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import NotesList from './Components/NotesList';
 import {nanoid} from 'nanoid';
 import './App.css';
@@ -14,15 +14,7 @@ const App = () => {
     text: 'This is my second note',
     date: '15/02/22'
     },
-
-    {
-      id: nanoid(),
-      text: 'This is my first note',
-      date: '13/02/22'
-    },
 ]);
-
-const [searchNote, setSearchNote] = useState('');
 
 const addNote = (text) => {
   const date = new Date();
@@ -36,8 +28,26 @@ const addNote = (text) => {
   const newNotes = [...notes, newNote]
   setNotes(newNotes);
 }
+const [searchNote, setSearchNote] = useState('');
 
 const[darkMode, setDarkMode] = useState(false);
+
+useEffect(() => {
+  const savedNotes = JSON.parse(
+    localStorage.getItem('react-notes-app-data')
+  );
+
+  if (savedNotes) {
+    setNotes(savedNotes);
+  }
+}, []);
+
+useEffect(() => {
+  localStorage.setItem(
+    'react-notes-app-data',
+    JSON.stringify(notes)
+  );
+}, [notes]);
 
 const deleteNote = (id) => {
   const newNotes = notes.filter((note) => note.id!== id);
