@@ -51,11 +51,17 @@ textarea:focus{
     white-space: pre-wrap;
 }
 
+.delete-icon{
+    cursor: pointer;
+}
+
 .note-footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-top: 20px;
 }
+
+
 
  
