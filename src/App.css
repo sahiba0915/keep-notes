@@ -12,6 +12,34 @@
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
+
+.note.new {
+    background-color: #7FC8F8;
+}
+
+textarea{
+    border: none;
+    resize: none;
+    background-color: #7FC8F8;
+}
+
+textarea:focus{
+    outline: none;
+}
+
+.save{
+    background-color: #F9F9F9;
+    border: none;
+    border-radius: 10px;
+    padding: 5px 10px;
+}
+
+.save:hover {
+    background-color: #317B22;
+    cursor: pointer;
+    color: white;
+}
+
 .note {
     background-color: #F7FE72;
     border-radius: 10px;
@@ -20,12 +48,14 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    white-space: pre-wrap;
 }
 
 .note-footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-top: 20px;
 }
 
  
